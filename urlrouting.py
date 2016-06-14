@@ -1,7 +1,9 @@
-import show_status
+from show_status import show_status
+from show_status import show_list
 
 url_app_mapping = {
-        '/':show_status.show_status
+        '/':show_status,
+        '/list':show_list
         }
 
 
