@@ -1,9 +1,8 @@
-from show_status import show_status
-from show_status import show_list
+import rate_info
 
 url_app_mapping = {
-        '/':show_status,
-        '/list':show_list
+        '/':rate_info.show_current_status,
+        '/list':rate_info.show_list
         }
 
 

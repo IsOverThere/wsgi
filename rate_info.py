@@ -1,9 +1,8 @@
 #!/usr/bin/env python
-import web_get_ss_log_now
 import commands
  
-def show_status(environ, start_response):
-    output = web_get_ss_log_now.web_get_ss_log_now()
+def show_current_status(environ, start_response):
+    status, output = commands.getstatusoutput('cat /tmp/iptables_now.log')
     status = '200 OK'
     response_headers = [('Content-type', 'text/plain')]
     start_response(status, response_headers)
