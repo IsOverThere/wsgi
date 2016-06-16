@@ -5,14 +5,14 @@ style = """
 <style type="text/css">
 a:link {
     font-size: 10pt;
-    color: #006699;
+    color: #111111;
     font-family: Calibri;
     text-align: left;
     text-decoration: none;
 }
 a:visited {
     font-size: 10pt;
-    color: #990066;
+    color: #222222;
     font-family: Calibri;
     text-align: left;
     text-decoration: none;
