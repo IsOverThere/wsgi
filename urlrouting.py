@@ -1,8 +1,8 @@
 import rate_info
 
 url_app_mapping = {
-        '/':rate_info.show_current_status,
-        '/list':rate_info.show_list
+        '/':rate_info.current_status,
+        '/list.wsgi':rate_info.list
         }
 
 def page_not_found(environ, start_response):
