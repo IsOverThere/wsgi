@@ -5,9 +5,20 @@ url_app_mapping = {
         '/list':rate_info.show_list
         }
 
+def page_not_found(environ, start_response):
+    output = 'Page Not Found'
+    status = '404 Page Not Found'
+    response_headers = [('Content-type', 'text/plain')]
+    start_response(status, response_headers)
+    return output 
+
 
 def urlrouting(environ, start_response):
     url = environ['PATH_INFO']
-    app = url_app_mapping[url]
-    result = app(environ, start_response)
+    try:
+        app = url_app_mapping[url]
+        result = app(environ, start_response)
+    except KeyError:
+        result = page_not_found(environ, start_response)
     return result
+
