@@ -1,24 +1,22 @@
 import rate_info
+import pagenotfound
+import show_images
 
 url_app_mapping = {
-        '/':rate_info.current_status,
+        '/now.wsgi':rate_info.current_status,
         '/list.wsgi':rate_info.list
         }
-
-def page_not_found(environ, start_response):
-    output = 'Page Not Found'
-    status = '404 Page Not Found'
-    response_headers = [('Content-type', 'text/plain')]
-    start_response(status, response_headers)
-    return output 
 
 
 def urlrouting(environ, start_response):
     url = environ['PATH_INFO']
-    try:
-        app = url_app_mapping[url]
-        result = app(environ, start_response)
-    except KeyError:
-        result = page_not_found(environ, start_response)
+    if '.jpg' in url or '.png' in url:
+        result = show_images.images_data(environ, start_response)
+    else:
+        try:
+            app = url_app_mapping[url]
+            result = app(environ, start_response)
+        except KeyError:
+            result = pagenotfound.show_pagenotfound(environ, start_response)
     return result
 
